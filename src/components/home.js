@@ -9,6 +9,9 @@ import {
     useLocation
   } from "react-router-dom";
 
+  import CustomerHome from "./customerhome";
+
+
 const Home = ({ loggedIn, signOut, type, name, getDetails}) => {
 
 
@@ -17,9 +20,12 @@ const Home = ({ loggedIn, signOut, type, name, getDetails}) => {
             
                 
 
-
-
+        <CustomerHome />
+        
         {type === "" || type === null ? <h2>Loading...</h2> : <h1 className="mx-auto block font-bold text-3xl">{type}</h1> }
+        
+
+
 
 
         </div>

@@ -55,12 +55,12 @@ const Confirm = ({ setLoggedIn }) => {
             {error ? <p>Error activating your account. Ensure your username and unique code are correct.</p> : null}
             <div className="mb-4">  
                 <label className="block text-gray-700 text-m font-bold mb-2">Username
-                <input type="text" id="username" placeholder="Username" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setUsername(e.target.value)}></input>          
+                <input type="text" id="username" placeholder="Username" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setUsername(e.target.value)}></input>          
                 </label>
             </div>
             <div className="mb-6">
                 <label className="block text-gray-700 text-m font-bold mb-2">One-Time Code (Sent via Email)
-                <input type="text" id="code" placeholder="Code" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setCode(e.target.value)}></input>          
+                <input type="text" id="code" placeholder="Code" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setCode(e.target.value)}></input>          
                 </label>
             </div>
             <button className="shadow bg-purple-500 hover:bg-purple-400 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full"onClick={confirmSignUp}>Activate Account</button> 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Auth } from 'aws-amplify'
 import '@aws-amplify/ui-react/styles.css';
 import {
@@ -8,9 +7,9 @@ import {
   Switch,
   Route,
   Routes,
-  Link,
-  useNavigate
+  Link
 } from "react-router-dom";
+
 import SignIn from './components/signin';
 import SignUp from './components/signup';
 import Home from './components/home';
@@ -24,7 +23,7 @@ function App() {
 
   const [type, setType] = useState('');
   const [name, setName] = useState('');
-    
+
   const getDetails = async () => {
 
     try{
@@ -51,6 +50,7 @@ function App() {
           console.log('not logged in');
 
           setLoggedIn(false);
+        
       })
 };
 
@@ -75,7 +75,7 @@ useEffect(() => {
       <TopBar loggedIn={loggedIn} signOut={signOut}/>
       <Routes>
         <Route path="/" element={<Home loggedIn={loggedIn} signOut={signOut} type={type} name={name} getDetails={getDetails}/>} />
-        <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />  
+        <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
         <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
         <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn}/>} />
       </Routes>    

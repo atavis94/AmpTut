@@ -7,7 +7,7 @@ import {
   import { Auth } from 'aws-amplify'
 
 
-const SignIn = ({ setLoggedIn, loggedIn }) => {
+const SignIn = ({ setLoggedIn }) => {
 
     const [code, setCode] = useState('');
     const [username, setUsername] = useState('');
