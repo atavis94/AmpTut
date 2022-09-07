@@ -65,6 +65,7 @@ function App() {
 
 useEffect(() => {
     checkLogggedIn();
+    getDetails();
 }, []);
 
 
@@ -73,8 +74,8 @@ useEffect(() => {
       <div className="App"> 
       <TopBar loggedIn={loggedIn} signOut={signOut}/>
       <Routes>
-        <Route path="/" element={<Home loggedIn={loggedIn} signOut={signOut} type={type} name={name} />} />
-        <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
+        <Route path="/" element={<Home loggedIn={loggedIn} signOut={signOut} type={type} name={name} getDetails={getDetails}/>} />
+        <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />  
         <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
         <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn}/>} />
       </Routes>    

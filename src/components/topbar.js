@@ -12,8 +12,7 @@ import {
 
 const TopBar = ({ loggedIn, signOut}) => {
     const loc = useLocation();
-    const hide = ["/signin", "/confirm", "signup"];
-    {console.log(loc)}
+    const hide = ["/signin", "/confirm"];
 
     return (
         <div className="TopBar">

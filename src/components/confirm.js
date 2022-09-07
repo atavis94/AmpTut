@@ -11,7 +11,7 @@ const Confirm = ({ setLoggedIn }) => {
 
     async function resendCode() {
         try {
-            await Auth.resendSignUp(username);
+            await Auth.resendSignUp(username.trim());
             console.log('code resent successfully');
         } catch (err) {
             console.log('error resending code: ', err);
@@ -20,7 +20,7 @@ const Confirm = ({ setLoggedIn }) => {
 
     async function confirmSignUp() {
         try {
-          await Auth.confirmSignUp(username, code);
+          await Auth.confirmSignUp(username.trim(), code.trim());
           history('/');
           setError(false);
         } catch (error) {
