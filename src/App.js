@@ -1,95 +1,86 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { API, Storage } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { listTodos } from './graphql/queries';
-import { createTodo as createNoteMutation, deleteTodo as deleteNoteMutation } from './graphql/mutations';
+import { Auth } from 'aws-amplify'
 import '@aws-amplify/ui-react/styles.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Routes,
+  Link,
+  useNavigate
+} from "react-router-dom";
+import SignIn from './components/signin';
+import SignUp from './components/signup';
+import Home from './components/home';
+import Confirm from './components/confirm';
+import TopBar from './components/topbar';
 
-const initialFormState = { name: '', description: '' }
 
-function App({ signOut }) {
-  const [notes, setNotes] = useState([]);
-  const [formData, setFormData] = useState(initialFormState);
+function App() {
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
-  
-  async function onChange(e) {
-	if (!e.target.files[0]) return
-	  const file = e.target.files[0];
-	  setFormData({ ...formData, image: file.name });
-	  await Storage.put(file.name, file);
-	  fetchNotes();
-  }
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  async function fetchNotes() {
-	  const apiData = await API.graphql({ query: listTodos });
-	  const notesFromAPI = apiData.data.listNotes.items;
-	  await Promise.all(notesFromAPI.map(async note => {
-		if (note.image) {
-		  const image = await Storage.get(note.image);
-		  note.image = image;
-		}
-		return note;
-	  }))
-	  setNotes(apiData.data.listNotes.items);
-  }
+  const [type, setType] = useState('');
+  const [name, setName] = useState('');
+    
+  const getDetails = async () => {
 
-	async function createNote() {
-	  if (!formData.name || !formData.description) return;
-	  await API.graphql({ query: createNoteMutation, variables: { input: formData } });
-	  if (formData.image) {
-		const image = await Storage.get(formData.image);
-		formData.image = image;
-	  }
-	  setNotes([ ...notes, formData ]);
-	  setFormData(initialFormState);
-	}
+    try{
+        const user = await Auth.currentUserInfo();
+        const type = user.attributes['custom:type'];
+        const name = user.attributes['custom:person']
+        setType(type);
+        setName(name);
+    }catch(e){
+        console.log('error fetching customer type', e);
+    }
 
-  async function deleteNote({ id }) {
-    const newNotesArray = notes.filter(note => note.id !== id);
-    setNotes(newNotesArray);
-    await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
-  }
+  };
+
+
+  const checkLogggedIn = () =>{
+    Auth.currentAuthenticatedUser()
+      .then(sess => {
+          console.log('logged in');
+          setLoggedIn(true);
+          getDetails();
+      })
+      .catch(() => {
+          console.log('not logged in');
+
+          setLoggedIn(false);
+      })
+};
+
+  const signOut = async () => {
+    try{
+        await Auth.signOut();
+        setLoggedIn(false);
+    } catch(e){
+        console.log('Error logging out', e);
+    }
+};
+
+useEffect(() => {
+    checkLogggedIn();
+}, []);
+
 
   return (
-    <div className="App">
-      <h1>My Notes App</h1>
-      <input
-        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Note name"
-        value={formData.name}
-      />
-      <input
-        onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-        placeholder="Note description"
-        value={formData.description}
-      />
-	  <input
-		  type="file"
-		  onChange={onChange}
-	  />
-      <button onClick={createNote}>Create Note</button>
-      <div style={{marginBottom: 30}}>
-        {
-          notes.map(note => (
-            <div key={note.id || note.name}>
-              <h2>{note.name}</h2>
-              <p>{note.description}</p>
-             
-			  {
-				note.image && <img src={note.image} style={{width: 400}} />
-			  }			
-			   <button onClick={() => deleteNote(note)}>Delete note</button>
-            </div>
-          ))
-        }
+    <Router>
+      <div className="App"> 
+      <TopBar loggedIn={loggedIn} signOut={signOut}/>
+      <Routes>
+        <Route path="/" element={<Home loggedIn={loggedIn} signOut={signOut} type={type} name={name} />} />
+        <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
+        <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
+        <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn}/>} />
+      </Routes>    
       </div>
-	  <button onClick={signOut}>Sign Out</button>
-    </div>
+    </Router>
   );
 }
 
-export default withAuthenticator(App);
+export default App;
