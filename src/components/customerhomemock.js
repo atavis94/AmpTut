@@ -20,7 +20,7 @@ const CustomerHomeMock = ({ setInteraction }) => {
     return (
         <div className="CustomerHomeMock">
 
-            <div className="flex place-content-center gap-2 m-4">
+            <div className="flex place-content-center gap-2 ml-4 mr-4">
                 <div className="bg-white shadow-md max-w-md rounded
                 mx-auto border-2 mt-16 border-indigo-800 items-center p-14 m-8 mb-4 ">
 
@@ -32,7 +32,7 @@ const CustomerHomeMock = ({ setInteraction }) => {
                     <span className="mb-6 block text-m font-semibold">Your Nuber is 600 metres away.</span>
                     <span className="mb-6 block text-m font-semibold">Estimated wait: 2 Minutes</span>
                     <span className="mb-1 block text-m font-semibold">Your Nuber's name is Daniel Ricardo.</span>
-                    <span className="mb-8 block text-m font-semibold">Daniel is driving a: Porsche 918 Spyder</span>
+                    <span className="mb-8 block text-m font-semibold">Daniel is driving a Porsche 918 Spyder [2G00D4U]</span>
                     <button className="shadow bg-purple-500 hover:bg-purple-400 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" onClick={handleSubmit}>Cancel Nuber</button>
 
 

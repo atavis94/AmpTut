@@ -4,10 +4,8 @@ import { Auth } from 'aws-amplify'
 import '@aws-amplify/ui-react/styles.css';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Routes,
-  Link
+  Routes
 } from "react-router-dom";
 
 import SignIn from './components/signin';
@@ -16,6 +14,8 @@ import Home from './components/home';
 import Confirm from './components/confirm';
 import TopBar from './components/topbar';
 import FourOhFour from './components/404';
+import BottomBar from './components/bottombar';
+import Account from './components/account';
 
 
 function App() {
@@ -72,15 +72,19 @@ useEffect(() => {
 
   return (
     <Router>
-      <div className="App"> 
+      <div className="App">     
       <TopBar loggedIn={loggedIn} signOut={signOut} name={name} type={type}/>
-      <Routes>
-        <Route path="/" element={<Home loggedIn={loggedIn} signOut={signOut} type={type} name={name} getDetails={getDetails}/>} />
-        <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
-        <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
-        <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn}/>} />
-        <Route path="*" element={<FourOhFour />} />
-      </Routes>    
+      <div className='min-h-screen max-h-screen'>
+        <Routes>
+          <Route path="/" element={<Home loggedIn={loggedIn} signOut={signOut} type={type} name={name} getDetails={getDetails}/>} />
+          <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
+          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
+          <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn}/>} />
+          <Route path="/account" element={<Account />}/>
+          <Route path="*" element={<FourOhFour />} />
+        </Routes>  
+      </div>
+      <BottomBar />
       </div>
     </Router>
   );

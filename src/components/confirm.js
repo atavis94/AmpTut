@@ -50,8 +50,8 @@ const Confirm = ({ setLoggedIn }) => {
     return (
 
     <div className="Confirm">
-        <h2 className="block text-gray-700 text-xl font-bold mb-2">Activate Account</h2>
-        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded max-w-md mx-auto border-2 mt-16 border-indigo-800 items-center px-8 pt-6 pb-8 mb-4">
+        <h2 className="block text-gray-700 text-xl font-bold p-3 mb-6">Activate Account</h2>
             {error ? <p>Error activating your account. Ensure your username and unique code are correct.</p> : null}
             <div className="mb-4">  
                 <label className="block text-gray-700 text-m font-bold mb-2">Username

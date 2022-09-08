@@ -20,12 +20,12 @@ const Home = ({ loggedIn, signOut, type, name, getDetails}) => {
             
                 
 
-        <CustomerHome />
         
-        {type === "" || type === null ? <h2>Loading...</h2> : <h1 className="mx-auto block font-bold text-3xl">{type}</h1> }
+        
+        {type === "" || type === null ? <h2>Loading...</h2> : null}
         
 
-
+        {type === "Customer" ? <CustomerHome /> : null}
 
 
         </div>

@@ -20,7 +20,7 @@ const CustomerHomeDefault = ({ setInteraction }) => {
     return (
         <div className="CustomerHomeDefault">
 
-            <div className="flex place-content-center gap-2 m-4">
+            <div className="flex place-content-center gap-2 ml-4 mr-4">
                 <div className="bg-white shadow-md max-w-md rounded border-2 border-indigo-800
                 mx-auto  mt-16  items-center p-14 m-8 mb-4 ">
 
@@ -29,12 +29,12 @@ const CustomerHomeDefault = ({ setInteraction }) => {
 
                     <div className="mb-4">  
                         <label className="block text-gray-700 text-m font-bold mb-2">Current Location
-                        <input type="text" id="username" placeholder="Username" value="123 Notta Road, Deimos, Mars" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" ></input>          
+                        <input type="text" id="username" readOnly placeholder="Username" value="123 Notta Road, Deimos, Mars" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" ></input>          
                         </label>
                     </div>
                     <div className="mb-6">
                         <label className="block text-gray-700 text-m font-bold mb-2">Destination
-                        <input type="text" id="code" placeholder="Code" value="321 Facade Ave, Fiction, Earth" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" ></input>          
+                        <input type="text" id="code" readOnly placeholder="Code" value="321 Facade Ave, Fiction, Earth" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" ></input>          
                         </label>
                     </div>
                     <span className="mb-6 block text-m font-semibold">Nubers in your area: 11</span>
