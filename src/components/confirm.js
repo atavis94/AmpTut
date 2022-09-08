@@ -63,8 +63,8 @@ const Confirm = ({ setLoggedIn }) => {
                 <input type="text" id="code" placeholder="Code" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setCode(e.target.value)}></input>          
                 </label>
             </div>
-            <button className="shadow bg-purple-500 hover:bg-purple-400 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full"onClick={confirmSignUp}>Activate Account</button> 
-            <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full"onClick={resendCode}>Resend Code</button>  
+            <button className="rounded-full shadow-lg bg-purple-600 hover:bg-purple-500 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4" onClick={confirmSignUp}>Activate Account</button> 
+            <button className="rounded-full shadow-lg bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4" onClick={resendCode}>Resend Code</button>  
         </form>
     </div>
     )};

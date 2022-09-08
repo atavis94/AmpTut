@@ -9,23 +9,24 @@ import {
     useLocation
   } from "react-router-dom";
 
-  import CustomerHome from "./customerhome";
+import NonUserLanding from "./nonuserlanding";
+import CustomerHome from "./customerhome";
 
 
-const Home = ({ loggedIn, signOut, type, name, getDetails}) => {
+const Home = ({ loggedIn, type, name}) => {
 
 
     return (
         <div className="Home">
             
                 
+        {loggedIn ? null : <NonUserLanding />}
+        
+        
+        {loggedIn && type === "" || type === null ? <h2>Loading...</h2> : null}
+        
 
-        
-        
-        {type === "" || type === null ? <h2>Loading...</h2> : null}
-        
-
-        {type === "Customer" ? <CustomerHome /> : null}
+        {loggedIn && type === "Customer" ? <CustomerHome /> : null}
 
 
         </div>

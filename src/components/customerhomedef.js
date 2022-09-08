@@ -39,7 +39,7 @@ const CustomerHomeDefault = ({ setInteraction }) => {
                     </div>
                     <span className="mb-6 block text-m font-semibold">Nubers in your area: 11</span>
                     <span className="mb-6 block text-m font-semibold">Estimated wait: 3 Minutes</span>
-                    <button className="shadow bg-purple-500 hover:bg-purple-400 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full"  onClick={handleSubmit}>Find Nuber</button>                    
+                    <button className="shadow bg-purple-600 hover:bg-purple-500 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full"  onClick={handleSubmit}>Find Nuber</button>                    
                     </form>
 
 

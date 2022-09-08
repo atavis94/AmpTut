@@ -33,7 +33,7 @@ const CustomerHomeMock = ({ setInteraction }) => {
                     <span className="mb-6 block text-m font-semibold">Estimated wait: 2 Minutes</span>
                     <span className="mb-1 block text-m font-semibold">Your Nuber's name is Daniel Ricardo.</span>
                     <span className="mb-8 block text-m font-semibold">Daniel is driving a Porsche 918 Spyder [2G00D4U]</span>
-                    <button className="shadow bg-purple-500 hover:bg-purple-400 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" onClick={handleSubmit}>Cancel Nuber</button>
+                    <button className="shadow bg-purple-600 hover:bg-purple-500 mr-2 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" onClick={handleSubmit}>Cancel Nuber</button>
 
 
                 </div>

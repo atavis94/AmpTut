@@ -18,14 +18,9 @@ const CustomerHome = () => {
 
     return (
         <div className="CustomerHome">
-
             
-        {interaction ? <CustomerHomeMock setInteraction={setInteraction}/> : <CustomerHomeDefault setInteraction={setInteraction}/>}
-            
-
-
-
-            
+            {interaction ? <CustomerHomeMock setInteraction={setInteraction}/> : <CustomerHomeDefault setInteraction={setInteraction}/>}
+             
         </div>
     )};
 

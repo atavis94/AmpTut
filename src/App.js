@@ -76,7 +76,7 @@ useEffect(() => {
       <TopBar loggedIn={loggedIn} signOut={signOut} name={name} type={type}/>
       <div className='min-h-screen max-h-screen'>
         <Routes>
-          <Route path="/" element={<Home loggedIn={loggedIn} signOut={signOut} type={type} name={name} getDetails={getDetails}/>} />
+          <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name}/>} />
           <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
           <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
           <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn}/>} />

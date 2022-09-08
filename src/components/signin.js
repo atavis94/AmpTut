@@ -92,11 +92,11 @@ const SignIn = ({ setLoggedIn }) => {
 
             : null }
 
-            <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full" onClick={reset ? resetSignIn : signIn}>Sign In</button>
-            <Link to="/signup"> <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full">Create Account</button> </Link>
+            <button className="rounded-full shadow-lg bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4" onClick={reset ? resetSignIn : signIn}>Sign In</button>
+            <Link to="/signup"> <button className="rounded-full shadow-lg bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4">Create Account</button> </Link>
            
             <div className="mb-2 mt-3">
-                <h3 className="text-indigo-800 font-semibold" onClick={forgotPassword}>Forgot Password?</h3>
+                <h3 className="text-purple-700 font-semibold hover:text-indigo-400" onClick={forgotPassword}>Forgot Password?</h3>
                 {reset ? <p>If your username was correct you will receive a validation email.</p> : null}
             </div>
         </form>

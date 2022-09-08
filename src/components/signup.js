@@ -110,7 +110,7 @@ const SignUp = ({ setLoggedIn, signUp }) => {
                 </label>
             </div>
 
-            <button className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-full"onClick={signUp}>Create Account</button>   
+            <button className="rounded-full shadow-lg bg-purple-600 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4"onClick={signUp}>Create Account</button>   
             <div className="mb-2 mt-3 text-red-400 font-semibold">
                 {error ? <p>Error creating account. Ensure your credentials meet the requirements.</p> : null}
             </div>
