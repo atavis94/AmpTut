@@ -53,7 +53,6 @@ const SignUp = ({ setLoggedIn, signUp }) => {
             else{
                 return false;
             }
-
     };
 
     function listenToAutoSignInEvent() {
@@ -76,10 +75,10 @@ const SignUp = ({ setLoggedIn, signUp }) => {
 
     return (
 
-    <div className="SignUp">
-        <h2 className="block text-gray-700 p-6 text-xl font-bold mb-2">Yay! Let's setup your account</h2>
+    <div className="SignUp mt-16">
+        
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded max-w-md mx-auto border-2 border-indigo-800 items-center px-8 pt-6 pb-8 mb-4">
-            
+        <h2 className="block text-gray-700 p-2 text-xl font-bold mb-2">Yay! Let's setup your account</h2>
             <div className="mb-4">  
                 <label className="block text-gray-700 text-m font-bold mb-2">Email* (must be valid)
                 <input type="email" id="email" placeholder="Email" className="shadow appearance-none border border-indigo-800 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={e => setEmail(e.target.value)}></input>          

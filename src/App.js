@@ -45,7 +45,8 @@ function App() {
       .then(sess => {
           console.log('logged in');
           setLoggedIn(true);
-          getDetails();
+          setTimeout(2500);
+          getDetails(); 
       })
       .catch(() => {
           console.log('not logged in');
@@ -55,25 +56,19 @@ function App() {
       })
 };
 
-  const signOut = async () => {
-    try{
-        await Auth.signOut();
-        setLoggedIn(false);
-    } catch(e){
-        console.log('Error logging out', e);
-    }
-};
+
 
 useEffect(() => {
     checkLogggedIn();
-    getDetails();
+    setTimeout(4000);
+    getDetails(); 
 }, []);
 
 
   return (
     <Router>
       <div className="App">     
-      <TopBar loggedIn={loggedIn} signOut={signOut} name={name} type={type}/>
+      <TopBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} name={name} type={type}/>
       <div className='min-h-screen max-h-screen'>
         <Routes>
           <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name}/>} />

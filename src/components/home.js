@@ -17,7 +17,7 @@ const Home = ({ loggedIn, type, name}) => {
 
 
     return (
-        <div className="Home">
+        <div className="Home mt-14">
             
                 
         {loggedIn ? null : <NonUserLanding />}

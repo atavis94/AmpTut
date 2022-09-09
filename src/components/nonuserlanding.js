@@ -1,7 +1,19 @@
-
+import { useNavigate } from "react-router-dom";
 const NonUserLanding = () => {
 
+    const history = useNavigate();
 
+    const createAccount = (e) =>{
+        e.preventDefault();
+        history('/signup');
+    
+    };
+
+    const signIn = (e) =>{
+        e.preventDefault();
+        history('/signin');
+    
+    };
 
 return(
 <div className="NonUserLanding">
@@ -13,10 +25,10 @@ return(
         </h2>
         <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
         <div className="inline-flex rounded-full shadow-md ">
-            <a href="#" className="inline-flex items-center justify-center rounded-full border border-transparent bg-purple-600 px-5 py-3 text-base font-medium text-white hover:bg-purple-500">Get started</a>
+            <button className="inline-flex items-center justify-center rounded-full border border-transparent bg-purple-600 px-5 py-3 text-base font-medium text-white hover:bg-purple-500" onClick={createAccount}>Create Account</button>
         </div>
-        <div class="ml-3 inline-flex rounded-full shadow-md ">
-            <a href="#" className="inline-flex items-center justify-center rounded-full border border-transparent bg-white px-5 py-3 text-base font-medium text-purple-600 hover:bg-purple-50">Learn more</a>
+        <div className="ml-3 inline-flex rounded-full shadow-md ">
+            <button className="inline-flex items-center justify-center rounded-full border border-transparent bg-white px-5 py-3 text-base font-medium text-purple-600 hover:bg-purple-50" onClick={signIn}>Sign In</button>
         </div>
         </div>
     </div>

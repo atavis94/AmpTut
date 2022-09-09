@@ -11,21 +11,33 @@ import {
   } from "react-router-dom";
 import acc from "../img/acc.svg";
 
-const TopBar = ({ loggedIn, signOut, name, type}) => {
+const TopBar = ({ loggedIn, setLoggedIn, name, type}) => {
     const loc = useLocation();
     const hide = ["/signin", "/confirm"];
     const history = useNavigate();
 
     const home = (e) =>{
         e.preventDefault();
-        history('/account');
+        history('/');
     
+    };
+
+
+
+    const signOut = async () => {
+        try{
+            await Auth.signOut();
+            setLoggedIn(false);
+            history('/');
+        } catch(e){
+            console.log('Error logging out', e);
+        }
     };
 
     return (
         <div className="TopBar">
-            <div className="p-2 max-w-full mx-auto bg-white rounded-sm border-indigo-800 border-b shadow-md justify-between flex items-center gap-2 space-x-0">
-                <h1 className=" indent-6 mx-2 block text-purple-700 drop-shadow-2xl hover:text-4xl font-bold subpixel-antialiased text-3xl">NUBER</h1>
+            <div className="p-2 z-40 fixed top-0 inset-x-0 bg-white rounded-sm border-indigo-800 border-b shadow-md justify-between flex items-center gap-2 space-x-0">
+                <h1 className=" indent-6 mx-2 block text-purple-700 drop-shadow-2xl hover:text-4xl font-bold subpixel-antialiased text-3xl" onClick={home}>NUBER</h1>
                 <div className="gap 2">
 
                     {hide.includes(loc.pathname) ? null :
