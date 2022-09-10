@@ -1,7 +1,7 @@
 
 import { Auth } from "aws-amplify";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 
 const Account = ({ signOut }) => {
@@ -9,11 +9,15 @@ const Account = ({ signOut }) => {
     const [success, setSuccess] = useState(false);
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const history = useNavigate();
+
 
     async function deleteUser() {
         try {
           const result = await Auth.deleteUser();
           console.log(result);
+          signOut();
+          history('/')
         } catch (error) {
           console.log('Error deleting user', error);
         }

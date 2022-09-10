@@ -67,7 +67,11 @@ const SignUp = ({ setLoggedIn, signUp }) => {
                 setLoggedIn(false);
             }
         })
-    }
+    };
+    
+    useEffect(() => {
+        listenToAutoSignInEvent();
+    }, []);
 
     const handleSubmit = (e) =>{
         e.preventDefault();

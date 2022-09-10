@@ -11,6 +11,8 @@ import {
 
 import NonUserLanding from "./nonuserlanding";
 import CustomerHome from "./customerhome";
+import DriverHome from "./driverhome";
+import Oops from "./oops";
 
 
 const Home = ({ loggedIn, type, name}) => {
@@ -23,10 +25,11 @@ const Home = ({ loggedIn, type, name}) => {
         {loggedIn ? null : <NonUserLanding />}
         
         
-        {loggedIn && type === "" || type === null ? <h2>Loading...</h2> : null}
+        {loggedIn && type === "" || type === null ? <Oops /> : null}
         
 
         {loggedIn && type === "Customer" ? <CustomerHome /> : null}
+        {loggedIn && type === "Driver" ? <DriverHome /> : null}
 
 
         </div>

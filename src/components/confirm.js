@@ -1,8 +1,8 @@
 import { Auth, Hub } from "aws-amplify";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Confirm = ({ setLoggedIn }) => {
+const Confirm = ({ setLoggedIn, loggedIn }) => {
 
     const [username, setUsername] = useState('');
     const [code, setCode] = useState('');
@@ -21,7 +21,12 @@ const Confirm = ({ setLoggedIn }) => {
     async function confirmSignUp() {
         try {
           await Auth.confirmSignUp(username.trim(), code.trim());
-          history('/');
+          if (await loggedIn){
+            history('/');
+          }
+          else{
+            history('/signin');
+          }
           setError(false);
         } catch (error) {
             console.log('error confirming sign up', error);
@@ -41,7 +46,12 @@ const Confirm = ({ setLoggedIn }) => {
                 setLoggedIn(false);
             }
         })
-    }
+    };
+
+    useEffect(() => {
+        listenToAutoSignInEvent();
+    }, []);
+    
 
     const handleSubmit = (e) =>{
         e.preventDefault();

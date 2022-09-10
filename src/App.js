@@ -40,7 +40,7 @@ function App() {
   };
 
 
-  const checkLogggedIn = () =>{
+  const checkLogggedIn = async () =>{
     Auth.currentAuthenticatedUser()
       .then(sess => {
           console.log('logged in');
@@ -55,7 +55,6 @@ function App() {
         
       })
 };
-
 
 
 useEffect(() => {
@@ -74,7 +73,7 @@ useEffect(() => {
           <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name}/>} />
           <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
           <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
-          <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn}/>} />
+          <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>} />
           <Route path="/account" element={<Account />}/>
           <Route path="*" element={<FourOhFour />} />
         </Routes>  
