@@ -4,17 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const SignUp = ({ setLoggedIn, signUp }) => {
+const SignUp = ({ setLoggedIn, password, username, setUsername, setPassword }) => {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [type, setType] = useState('Customer');
     const [name, setName] = useState('');
     const history = useNavigate();
     const [error, setError] = useState(false);
 
-    async function signUp() {
+    async function createAccount() {
         if(validateInput){
             try {
                 const { user } = await Auth.signUp({
@@ -47,7 +45,7 @@ const SignUp = ({ setLoggedIn, signUp }) => {
         if(username.length > 3
             && email.includes('@')
             && password.length >= 8
-            && name.trim() != ''){
+            && name.trim() !== ''){
                 return true;
             }
             else{
@@ -71,7 +69,7 @@ const SignUp = ({ setLoggedIn, signUp }) => {
     
     useEffect(() => {
         listenToAutoSignInEvent();
-    }, []);
+    }, );
 
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -113,7 +111,7 @@ const SignUp = ({ setLoggedIn, signUp }) => {
                 </label>
             </div>
 
-            <button className="rounded-full shadow-lg bg-purple-600 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4"onClick={signUp}>Create Account</button>   
+            <button className="rounded-full shadow-lg bg-purple-600 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4"onClick={createAccount}>Create Account</button>   
             <div className="mb-2 mt-3 text-red-400 font-semibold">
                 {error ? <p>Error creating account. Ensure your credentials meet the requirements.</p> : null}
             </div>

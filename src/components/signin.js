@@ -1,17 +1,15 @@
 import React, {useState} from "react";
 import {
-    BrowserRouter as Router,
     Link
   } from "react-router-dom";
-  import { useNavigate, useLocation } from 'react-router-dom';
+  import { useNavigate } from 'react-router-dom';
   import { Auth } from 'aws-amplify'
 
 
-const SignIn = ({ setLoggedIn }) => {
+const SignIn = ({ setLoggedIn, password, username, setPassword, setUsername }) => {
 
     const [code, setCode] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+
     const [siError, setSiError] = useState(false);
     const [reset, setReset] = useState(false);
     const history = useNavigate();

@@ -1,14 +1,5 @@
-import { Auth } from "aws-amplify";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Routes,
-    Link,
-    useNavigate,
-    useLocation
-  } from "react-router-dom";
-  import placeholder from '../img/placeholder2.png';
+
+import placeholder from '../img/placeholder2.png';
 
 const CustomerHomeMock = ({ setInteraction }) => {
 

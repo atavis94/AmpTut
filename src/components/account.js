@@ -66,7 +66,7 @@ const Account = ({ signOut }) => {
                     
                     <div className="mt-16">
                         <p className="block text-gray-700 text-lg font-bold p-3 mb-6">Delete Account</p>
-                        <p className="block text-gray-700 text-sm font-bold p-3 mb-6">Warning, this WILL delete your account permanently!</p>
+                        <p className="block text-gray-700 text-sm font-bold p-3 mb-6">Warning, this WILL delete your account immediately and permanently!</p>
                         <button className="rounded-full shadow-lg bg-red-600 hover:bg-red-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4" onClick={deleteUser}>Delete Account</button>  
 
                     </div>

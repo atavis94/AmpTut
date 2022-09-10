@@ -4,10 +4,10 @@
     "apiName": "ampgraph",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 100,
-      "apiKeyExpirationDate": "2022-12-15T07:05:16.353Z",
-      "keyDescription": "graph"
-    }
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authamptutf660167c"
+    },
+    "additionalAuthTypes": [],
+    "conflictResolution": {}
   }
 }

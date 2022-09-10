@@ -2,9 +2,9 @@ import { Auth, Hub } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Confirm = ({ setLoggedIn, loggedIn }) => {
+const Confirm = ({ setLoggedIn, loggedIn, username, password, setUsername }) => {
 
-    const [username, setUsername] = useState('');
+
     const [code, setCode] = useState('');
     const history = useNavigate();
     const [error, setError] = useState(false);
@@ -26,6 +26,7 @@ const Confirm = ({ setLoggedIn, loggedIn }) => {
           }
           else{
             history('/signin');
+            const user = await Auth.signIn(username.trim(), password);
           }
           setError(false);
         } catch (error) {

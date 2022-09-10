@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Auth } from 'aws-amplify'
-import '@aws-amplify/ui-react/styles.css';
+import { Auth, Hub } from 'aws-amplify'
 import {
   BrowserRouter as Router,
   Route,
   Routes
 } from "react-router-dom";
-
 import SignIn from './components/signin';
 import SignUp from './components/signup';
 import Home from './components/home';
@@ -25,6 +23,9 @@ function App() {
   const [type, setType] = useState('');
   const [name, setName] = useState('');
 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   const getDetails = async () => {
 
     try{
@@ -38,6 +39,12 @@ function App() {
     }
 
   };
+
+  // Attempt at fixing a strange bug where AWS does not return auth data.
+  // Could not explicitly timeout promise function.
+  function  getDetailsFix(){
+    getDetails();
+  }
 
 
   const checkLogggedIn = async () =>{
@@ -54,14 +61,29 @@ function App() {
           setLoggedIn(false);
         
       })
-};
+  };
 
+  // You'll find this everywhere. AWS documentation has no actual explanation of how it works.
+  // Seems to work ... most ... of the time.
+  function listenToAutoSignInEvent() {
+    Hub.listen('auth', ({ payload }) => {
+        const { event } = payload;
+        if (event === 'autoSignIn') {
+            const user = payload.data;
+            setLoggedIn(true);
+            // assign user
+        } else if (event === 'autoSignIn_failure') {
+            setLoggedIn(false);
+        }
+    })
+  };
 
-useEffect(() => {
-    checkLogggedIn();
-    setTimeout(4000);
-    getDetails(); 
-}, []);
+  useEffect(() => {
+      listenToAutoSignInEvent();
+      checkLogggedIn();
+      setTimeout(getDetailsFix(), 4000);
+      getDetails(); 
+  }, []);
 
 
   return (
@@ -71,9 +93,9 @@ useEffect(() => {
       <div className='min-h-screen max-h-screen'>
         <Routes>
           <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name}/>} />
-          <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} />} />  
-          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} />} />
-          <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn} loggedIn={loggedIn}/>} />
+          <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername} />} />  
+          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername}/>} />
+          <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn} loggedIn={loggedIn} password={password} username={username} setUsername={setUsername}/>} />
           <Route path="/account" element={<Account />}/>
           <Route path="*" element={<FourOhFour />} />
         </Routes>  
