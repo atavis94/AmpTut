@@ -25,9 +25,14 @@ const Confirm = ({ setLoggedIn, loggedIn, username, password, setUsername }) => 
             history('/');
           }
           else{
-            history('/signin');
             const user = await Auth.signIn(username.trim(), password);
-          }
+            if (await loggedIn){
+                history('/');
+              }
+              else{
+                history('/signin');
+            }
+        }
           setError(false);
         } catch (error) {
             console.log('error confirming sign up', error);
