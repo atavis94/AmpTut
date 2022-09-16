@@ -5,7 +5,7 @@ import DriverHome from "./driverhome";
 import Oops from "./oops";
 
 
-const Home = ({ loggedIn, type, name}) => {
+const Home = ({ loggedIn, type, name, refresh}) => {
 
 
     return (
@@ -15,7 +15,7 @@ const Home = ({ loggedIn, type, name}) => {
         {loggedIn ? null : <NonUserLanding />}
         
         
-        {loggedIn && type === "" || type === null ? <Oops /> : null}
+        {loggedIn && type === "" || type === null ? <Oops refresh={refresh}/> : null}
         
 
         {loggedIn && type === "Customer" ? <CustomerHome /> : null}

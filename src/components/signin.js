@@ -6,7 +6,7 @@ import {
   import { Auth } from 'aws-amplify'
 
 
-const SignIn = ({ setLoggedIn, password, username, setPassword, setUsername }) => {
+const SignIn = ({ setLoggedIn, password, username, setPassword, setUsername, refresh }) => {
 
     const [code, setCode] = useState('');
 
@@ -20,6 +20,7 @@ const SignIn = ({ setLoggedIn, password, username, setPassword, setUsername }) =
             history('/');
             setLoggedIn(true);
             setSiError(false);
+            refresh();
         } catch(e){
             setSiError(true);
             console.log('error signing in', e);

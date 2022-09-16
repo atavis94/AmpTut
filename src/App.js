@@ -26,6 +26,11 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const refreshPage = ()=>{
+    window.location.reload();
+ }
+
+
   const getDetails = async () => {
 
     try{
@@ -79,6 +84,7 @@ function App() {
   };
 
   useEffect(() => {
+      setType('');
       listenToAutoSignInEvent();
       checkLogggedIn();
       setTimeout(getDetailsFix(), 4000);
@@ -92,10 +98,10 @@ function App() {
       <TopBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} name={name} type={type}/>
       <div className='min-h-screen max-h-screen'>
         <Routes>
-          <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name}/>} />
-          <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername} />} />  
-          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername}/>} />
-          <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn} loggedIn={loggedIn} password={password} username={username} setUsername={setUsername}/>} />
+          <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name} refresh={refreshPage} />} />
+          <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername} refresh={refreshPage}/>} />  
+          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername} refresh={refreshPage}/>} />
+          <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn} loggedIn={loggedIn} password={password} username={username} setUsername={setUsername} refresh={refreshPage}/>} />
           <Route path="/account" element={<Account />}/>
           <Route path="*" element={<FourOhFour />} />
         </Routes>  

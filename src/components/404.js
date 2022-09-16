@@ -1,12 +1,13 @@
 
 import { useNavigate } from 'react-router-dom';
 
-const FourOhFour = () => {
+const FourOhFour = ({ refresh }) => {
 
 const history = useNavigate();
 
 const home = (e) =>{
     e.preventDefault();
+    refresh();
     history('/');
 
 };
