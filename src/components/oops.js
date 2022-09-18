@@ -1,13 +1,14 @@
 
 import { useNavigate } from 'react-router-dom';
 
-const Oops = () => {
+const Oops = ({ refresh }) => {
 
 const history = useNavigate();
 
 const home = (e) =>{
     e.preventDefault();
     history('/');
+    refresh();
 
 };
 

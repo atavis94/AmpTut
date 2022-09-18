@@ -26,13 +26,7 @@ const Confirm = ({ setLoggedIn, loggedIn, username, password, setUsername, refre
           }
           else{
             const user = await Auth.signIn(username.trim(), password);
-            if (await loggedIn){
-                history('/');
-                refresh();
-              }
-              else{
-                history('/signin');
-            }
+            history('/');
         }
           setError(false);
         } catch (error) {
