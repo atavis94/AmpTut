@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const SignUp = ({ setLoggedIn, password, username, setUsername, setPassword, refresh }) => {
+const SignUp = ({ setLoggedIn, password, username, setUsername, setPassword }) => {
 
     const [email, setEmail] = useState('');
     const [type, setType] = useState('Customer');

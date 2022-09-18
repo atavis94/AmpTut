@@ -100,7 +100,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name} refresh={refreshPage} />} />
           <Route path="/signin" element={<SignIn setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername} refresh={refreshPage}/>} />  
-          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername} refresh={refreshPage}/>} />
+          <Route path="/signup" element={<SignUp setLoggedIn={setLoggedIn} password={password} username={username} setPassword={setPassword} setUsername={setUsername}/>} />
           <Route path="/confirm" element={<Confirm setLoggedIn={setLoggedIn} loggedIn={loggedIn} password={password} username={username} setUsername={setUsername} refresh={refreshPage}/>} />
           <Route path="/account" element={<Account />}/>
           <Route path="*" element={<FourOhFour />} />
