@@ -95,7 +95,7 @@ function App() {
   return (
     <Router>
       <div className="App">     
-      <TopBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} name={name} type={type}/>
+      <TopBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} name={name} setType={setType}/>
       <div className='min-h-screen max-h-screen'>
         <Routes>
           <Route path="/" element={<Home loggedIn={loggedIn} type={type} name={name} refresh={refreshPage} />} />

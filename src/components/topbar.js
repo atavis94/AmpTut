@@ -6,7 +6,7 @@ import {
     useLocation
   } from "react-router-dom";
 
-const TopBar = ({ loggedIn, setLoggedIn, name, type}) => {
+const TopBar = ({ loggedIn, setLoggedIn, name, setType}) => {
     const loc = useLocation();
     const hide = ["/signin", "/confirm"];
     const history = useNavigate();
@@ -23,6 +23,7 @@ const TopBar = ({ loggedIn, setLoggedIn, name, type}) => {
         try{
             await Auth.signOut();
             setLoggedIn(false);
+            setType("");
             history('/');
         } catch(e){
             console.log('Error logging out', e);
